@@ -40,23 +40,6 @@ WIN_COMBINATIONS = [
     !winning_combo.empty? && over?
    end
 
-
-  # def won?  # <<< --- WHY DOES THIS NOT WORK WITH "O"?
-  #   winning_combo = []
-  #   WIN_COMBINATIONS.each do | el |
-  #     if el.all? {|i| board.cells[i] == "O"}
-  #         # binding.pry
-  #         winning_combo << el
-  #         return winning_combo.flatten
-  #     elsif el.all? {|i| board.cells[i] == "X"}
-  #         # binding.pry
-  #         winning_combo << el
-  #         return winning_combo.flatten
-  #       end
-  #     end
-  #   !winning_combo.empty? && over?
-  # end
-
   def draw?
     !won? && @board.full?
   end
@@ -84,10 +67,10 @@ WIN_COMBINATIONS = [
 
     if won?
       puts "Congratulations #{winner}!"
-      self.play_again?
+      self.play_again? # If these are commented out, all tests pass.
     elsif draw?
       puts "Cat's Game!"
-      self.play_again?
+      self.play_again? # If these are commented out, all tests pass.
     end
   end
 
