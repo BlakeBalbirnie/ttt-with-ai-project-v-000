@@ -16,7 +16,7 @@ class Players
     def move(board)
       # if two identical tokens are present in
       # WIN_COMBINATIONS, next move goes on same row
-      
+
     move = nil
 
       WIN_COMBINATIONS.each do | el |
