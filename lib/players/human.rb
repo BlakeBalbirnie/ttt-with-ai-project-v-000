@@ -270,16 +270,16 @@ module Players
           p_2 = board.cells[w_2]
           p_3 = board.cells[w_3]
 
-          if p_1 == opp && p_2 == self.token && board.valid_move?((w_3  1).to_s)            #edge case
+          if p_1 == opp && p_2 == self.token && board.valid_move?((w_3 + 1).to_s)            #edge case
             moves.delete_if {|m| board.position(m) == opp || board.position(m) == token}
             corners.delete_if {|m| board.position(m) == opp || board.position(m) == token}
             edges.delete_if {|m| board.position(m) == opp || board.position(m) == token}
-            return (w_3  1).to_s #if 1st opp and 2nd self play 3rd
-          elsif p_3 == opp && p_2 == self.token && board.valid_move?((w_1  1).to_s)          #edge case
+            return (w_3 + 1).to_s #if 1st opp and 2nd self play 3rd
+          elsif p_3 == opp && p_2 == self.token && board.valid_move?((w_1 + 1).to_s)          #edge case
             moves.delete_if {|m| board.position(m) == opp || board.position(m) == token}
             corners.delete_if {|m| board.position(m) == opp || board.position(m) == token}
             edges.delete_if {|m| board.position(m) == opp || board.position(m) == token}
-            return (w_1  1).to_s #if 1st opp and 2nd self play 3rd
+            return (w_1 + 1).to_s #if 1st opp and 2nd self play 3rd
           end #small if
         end #detect
 
@@ -294,21 +294,21 @@ module Players
           p_2 = board.cells[w_2]
           p_3 = board.cells[w_3]
 
-          if p_1 == self.token && p_2 == self.token && board.valid_move?((w_3  1).to_s) #win
+          if p_1 == self.token && p_2 == self.token && board.valid_move?((w_3 + 1).to_s) #win
             moves.delete_if {|m| board.position(m) == opp || board.position(m) == token}
             corners.delete_if {|m| board.position(m) == opp || board.position(m) == token}
             edges.delete_if {|m| board.position(m) == opp || board.position(m) == token}
-            return (w_3  1).to_s #if 1st and 2nd win combos self self play 3rd
-          elsif p_1 == self.token && p_3 == self.token && board.valid_move?((w_2  1).to_s) #win
+            return (w_3 + 1).to_s #if 1st and 2nd win combos self self play 3rd
+          elsif p_1 == self.token && p_3 == self.token && board.valid_move?((w_2 + 1).to_s) #win
             moves.delete_if {|m| board.position(m) == opp || board.position(m) == token}
             corners.delete_if {|m| board.position(m) == opp || board.position(m) == token}
             edges.delete_if {|m| board.position(m) == opp || board.position(m) == token}
-            return (w_2  1).to_s #if 1st and 3rd win combos self self play 2nd
-          elsif p_2 == self.token && p_3 == self.token && board.valid_move?((w_1  1).to_s) #win
+            return (w_2 + 1).to_s #if 1st and 3rd win combos self self play 2nd
+          elsif p_2 == self.token && p_3 == self.token && board.valid_move?((w_1 + 1).to_s) #win
             moves.delete_if {|m| board.position(m) == opp || board.position(m) == token}
             corners.delete_if {|m| board.position(m) == opp || board.position(m) == token}
             edges.delete_if {|m| board.position(m) == opp || board.position(m) == token}
-            return (w_1  1).to_s #if 2nd and 3rd win combos self self play 1st
+            return (w_1 + 1).to_s #if 2nd and 3rd win combos self self play 1st
           end #small if
         end #detect
 
@@ -321,21 +321,21 @@ module Players
           p_2 = board.cells[w_2]
           p_3 = board.cells[w_3]
 
-          if p_1 == opp && p_2 == opp && board.valid_move?((w_3  1).to_s)                 #block
+          if p_1 == opp && p_2 == opp && board.valid_move?((w_3 + 1).to_s)                 #block
             moves.delete_if {|m| board.position(m) == opp || board.position(m) == token}
             corners.delete_if {|m| board.position(m) == opp || board.position(m) == token}
             edges.delete_if {|m| board.position(m) == opp || board.position(m) == token}
-            return (w_3  1).to_s #if 1st 2 win combos are opp play 3rd
-          elsif p_1 == opp && p_3 == opp && board.valid_move?((w_2  1).to_s)               #block
+            return (w_3 + 1).to_s #if 1st 2 win combos are opp play 3rd
+          elsif p_1 == opp && p_3 == opp && board.valid_move?((w_2 + 1).to_s)               #block
             moves.delete_if {|m| board.position(m) == opp || board.position(m) == token}
             corners.delete_if {|m| board.position(m) == opp || board.position(m) == token}
             edges.delete_if {|m| board.position(m) == opp || board.position(m) == token}
-            return (w_2  1).to_s #if 1st and 3rd win combos are opp play 2nd
-          elsif p_2 == opp && p_3 == opp && board.valid_move?((w_1  1).to_s)               #block
+            return (w_2 + 1).to_s #if 1st and 3rd win combos are opp play 2nd
+          elsif p_2 == opp && p_3 == opp && board.valid_move?((w_1 + 1).to_s)               #block
             moves.delete_if {|m| board.position(m) == opp || board.position(m) == token}
             corners.delete_if {|m| board.position(m) == opp || board.position(m) == token}
             edges.delete_if {|m| board.position(m) == opp || board.position(m) == token}
-            return (w_1  1).to_s #if 2nd and 3rd win combos are opp play 1st
+            return (w_1 + 1).to_s #if 2nd and 3rd win combos are opp play 1st
           end #small if
         end #detect
 
@@ -348,16 +348,16 @@ module Players
           p_2 = board.cells[w_2]
           p_3 = board.cells[w_3]
 
-          if p_1 == opp && p_2 == self.token && board.valid_move?((w_3  1).to_s)            #edge case
+          if p_1 == opp && p_2 == self.token && board.valid_move?((w_3 + 1).to_s)            #edge case
             moves.delete_if {|m| board.position(m) == opp || board.position(m) == token}
             corners.delete_if {|m| board.position(m) == opp || board.position(m) == token}
             edges.delete_if {|m| board.position(m) == opp || board.position(m) == token}
-            return (w_3  1).to_s #if 1st opp and 2nd self play 3rd
-          elsif p_3 == opp && p_2 == self.token && board.valid_move?((w_1  1).to_s)          #edge case
+            return (w_3 + 1).to_s #if 1st opp and 2nd self play 3rd
+          elsif p_3 == opp && p_2 == self.token && board.valid_move?((w_1 + 1).to_s)          #edge case
             moves.delete_if {|m| board.position(m) == opp || board.position(m) == token}
             corners.delete_if {|m| board.position(m) == opp || board.position(m) == token}
             edges.delete_if {|m| board.position(m) == opp || board.position(m) == token}
-            return (w_1  1).to_s #if 1st opp and 2nd self play 3rd
+            return (w_1 + 1).to_s #if 1st opp and 2nd self play 3rd
           end #small if
         end #detect
 
@@ -370,16 +370,16 @@ module Players
           p_2 = board.cells[w_2]
           p_3 = board.cells[w_3]
 
-          if p_1 == opp && p_3 == self.token && board.valid_move?((w_2  1).to_s)            #edge case
+          if p_1 == opp && p_3 == self.token && board.valid_move?((w_2 + 1).to_s)            #edge case
             moves.delete_if {|m| board.position(m) == opp || board.position(m) == token}
             corners.delete_if {|m| board.position(m) == opp || board.position(m) == token}
             edges.delete_if {|m| board.position(m) == opp || board.position(m) == token}
-            return (w_2  1).to_s #if 1st opp and 3rd self play 2nd
-          elsif p_3 == opp && p_1 == self.token && board.valid_move?((w_2  1).to_s)          #edge case
+            return (w_2 + 1).to_s #if 1st opp and 3rd self play 2nd
+          elsif p_3 == opp && p_1 == self.token && board.valid_move?((w_2 + 1).to_s)          #edge case
             moves.delete_if {|m| board.position(m) == opp || board.position(m) == token}
             corners.delete_if {|m| board.position(m) == opp || board.position(m) == token}
             edges.delete_if {|m| board.position(m) == opp || board.position(m) == token}
-            return (w_2  1).to_s #if 3rd opp and 1st self play 2nd
+            return (w_2 + 1).to_s #if 3rd opp and 1st self play 2nd
           end #small if
         end #detect
 
