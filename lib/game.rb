@@ -29,13 +29,17 @@ WIN_COMBINATIONS = [
   end
 
   def won?
-    WIN_COMBINATIONS.detect do |el|
-      @board.cells[el[0]] == @board.cells[el[1]] &&
-      @board.cells[el[1]] == @board.cells[el[2]] &&
-      @board.taken?(el[0]+1)
-      # binding.pry
-    end
-  end
+    winning_combo = []
+    WIN_COMBINATIONS.each do | el |
+      if el.all? {|i| board.cells[i] == "O"} || el.all? {|i| board.cells[i] == "X"}
+          # binding.pry
+          winning_combo << el
+          return winning_combo.flatten
+        end
+      end
+    !winning_combo.empty? && over?
+   end
+
 
   # def won?  # <<< --- WHY DOES THIS NOT WORK WITH "O"?
   #   winning_combo = []
