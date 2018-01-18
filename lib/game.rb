@@ -40,7 +40,7 @@ class Game
       p_2 = @board.cells[w_2]
       p_3 = @board.cells[w_3]
 
-      p_1 == p_2 && p_2 == p_3 && @board.taken?(w_1  1)
+      p_1 == p_2 && p_2 == p_3 && @board.taken?(w_1 + 1)
     end
   end
 
