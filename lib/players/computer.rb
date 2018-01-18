@@ -24,7 +24,7 @@ class Players
         if selected.length == 2
           # binding.pry
           num = el - selected
-          move = num[0]  1
+          move = num[0] + 1
           # break
         end
       end
