@@ -32,7 +32,7 @@ WIN_COMBINATIONS = [
     WIN_COMBINATIONS.detect do |el|
       @board.cells[el[0]] == @board.cells[el[1]] &&
       @board.cells[el[1]] == @board.cells[el[2]] &&
-      @board.taken?(el[0]1)
+      @board.taken?(el[0]+1)
       # binding.pry
     end
   end
