@@ -65,14 +65,14 @@ WIN_COMBINATIONS = [
       turn
     end
 
-  #  if won?
-  #    puts "Congratulations #{winner}!"
+    if won?
+      puts "Congratulations #{winner}!"
   #    self.play_again? # If these are commented out, all tests pass.
-  #  elsif draw?
-  #    puts "Cat's Game!"
+    elsif draw?
+      puts "Cat's Game!"
   #    self.play_again? # If these are commented out, all tests pass.
-  #  end
-  #end
+    end
+  end
 
   def play_again?
     puts "Play again? (Y/N)"
