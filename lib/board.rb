@@ -1,9 +1,10 @@
 require 'pry'
+
 class Board
-  attr_accessor :cells
+attr_accessor :cells, :board
 
   def initialize
-    self.reset!
+    @cells = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
   end
 
   def reset!
@@ -11,53 +12,38 @@ class Board
   end
 
   def display
-    row_1 = " #{@cells[0]} | #{@cells[1]} | #{@cells[2]} "
-    line = "-----------"
-    row_2 = " #{@cells[3]} | #{@cells[4]} | #{@cells[5]} "
-    row_3 = " #{@cells[6]} | #{@cells[7]} | #{@cells[8]} "
-    puts row_1
-    puts line
-    puts row_2
-    puts line
-    puts row_3
+    puts " #{@cells[0]} | #{@cells[1]} | #{@cells[2]} "
+    puts "-----------"
+    puts " #{@cells[3]} | #{@cells[4]} | #{@cells[5]} "
+    puts "-----------"
+    puts " #{@cells[6]} | #{@cells[7]} | #{@cells[8]} "
   end
 
   def position(input)
-    position = @cells[input.to_i - 1]
+    index = input.to_i - 1
+    self.cells[index]
   end
 
   def full?
-    @cells.all? {|cell| cell == "X" || cell == "O"}
+    !@cells.any? {|i| i == " "}
   end
 
   def turn_count
-    count = 0
-    @cells.each do |cell|
-      if cell == "X" || cell == "O"
-        count += 1
-      end
-    end
-    count
+    @cells.count {|i| i != " "}
   end
 
   def taken?(input)
-    if self.position(input) == "X" || self.position(input) == "O"
-      true
-    else
-      false
-    end
+    index = input.to_i - 1
+    @cells[index] != " "
   end
 
   def valid_move?(input)
-    if input.to_i >= 1 && input.to_i <= 9 && self.taken?(input) == false
-      true
-    else
-      false
-    end
+    !self.taken?(input) && input.to_i.between?(1,9)
   end
 
-  def update(move, player)
-    @cells[move.to_i - 1]= player.token
+  def update(num, player)
+    index = num.to_i - 1
+    @cells[index] = player.token
   end
 
 end
